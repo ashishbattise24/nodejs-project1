@@ -1,0 +1,14 @@
+name: docker-build
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image with compose
+        run: docker compose build
+      - name: List images
+        run: docker images
